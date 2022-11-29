@@ -10,18 +10,18 @@ _$_PPCheckoutConfig _$$_PPCheckoutConfigFromJson(Map<String, dynamic> json) =>
     _$_PPCheckoutConfig(
       clientId: json['clientId'] as String,
       environment: $enumDecode(_$PPEnvironmentEnumMap, json['environment']),
-      currencyCode: $enumDecode(_$PPCurrencyCodeEnumMap, json['currencyCode']),
+      currencyCode:
+          $enumDecodeNullable(_$PPCurrencyCodeEnumMap, json['currencyCode']),
       userAction:
-          $enumDecodeNullable(_$PPUserActionEnumMap, json['userAction']) ??
-              PPUserAction.continueAction,
+          $enumDecodeNullable(_$PPUserActionEnumMap, json['userAction']),
     );
 
 Map<String, dynamic> _$$_PPCheckoutConfigToJson(_$_PPCheckoutConfig instance) =>
     <String, dynamic>{
       'clientId': instance.clientId,
       'environment': _$PPEnvironmentEnumMap[instance.environment]!,
-      'currencyCode': _$PPCurrencyCodeEnumMap[instance.currencyCode]!,
-      'userAction': _$PPUserActionEnumMap[instance.userAction]!,
+      'currencyCode': _$PPCurrencyCodeEnumMap[instance.currencyCode],
+      'userAction': _$PPUserActionEnumMap[instance.userAction],
     };
 
 const _$PPEnvironmentEnumMap = {

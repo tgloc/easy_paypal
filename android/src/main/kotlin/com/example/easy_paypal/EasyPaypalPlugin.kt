@@ -5,7 +5,6 @@ import android.util.Log
 import com.example.easy_paypal.helpers.OrderHelper
 import com.example.easy_paypal.models.CheckoutConfigStore
 import com.example.easy_paypal.models.PayPalCallBackHelper
-import com.google.gson.Gson
 import com.paypal.checkout.PayPalCheckout
 import com.paypal.checkout.PayPalCheckout.startCheckout
 import com.paypal.checkout.approve.OnApprove
@@ -16,15 +15,10 @@ import com.paypal.checkout.config.SettingsConfig
 import com.paypal.checkout.createorder.*
 import com.paypal.checkout.createorder.CreateOrderActions.OnOrderCreated
 import com.paypal.checkout.error.OnError
-import com.paypal.checkout.order.Amount
-import com.paypal.checkout.order.AppContext
-import com.paypal.checkout.order.Order
-import com.paypal.checkout.order.PurchaseUnit
 import com.paypal.checkout.shipping.OnShippingChange
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-import io.flutter.embedding.engine.systemchannels.TextInputChannel.TextEditState.fromJson
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -71,10 +65,10 @@ class EasyPaypalPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         try {
             val clientId = call.argument<String>("clientId")
             val environment = call.argument<String>("environment")
-            val currencyCode = call.argument<String>("currencyCode")
-            val userAction = call.argument<String>("userAction")
+            val currencyCode = call.argument<String?>("currencyCode")
+            val userAction = call.argument<String?>("userAction")
 
-            if (clientId == null || environment == null || currencyCode == null || userAction == null) {
+            if (clientId == null || environment == null) {
                 result.error("INVALID_ARGUMENTS", "Invalid arguments", null)
                 return
             }
@@ -97,8 +91,12 @@ class EasyPaypalPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 application,
                 clientId = checkoutConfigStore.clientId,
                 environment = Environment.valueOf(checkoutConfigStore.environment),
-                currencyCode = CurrencyCode.valueOf(checkoutConfigStore.currencyCode),
-                userAction = UserAction.valueOf(checkoutConfigStore.userAction),
+                currencyCode = checkoutConfigStore.currencyCode?.let {
+                    CurrencyCode.valueOf(it)
+                },
+                userAction = checkoutConfigStore.userAction?.let {
+                    UserAction.valueOf(it)
+                },
                 settingsConfig = SettingsConfig(
                     loggingEnabled = false
                 )
@@ -141,8 +139,8 @@ class EasyPaypalPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
         startCheckout(
             CreateOrder { createOrderActions: CreateOrderActions ->
-                createOrderActions.create(order, OnOrderCreated {
-                    orderId ->  Log.i("Created ORDER_ID", orderId)
+                createOrderActions.create(order, OnOrderCreated { orderId ->
+                    Log.i("Created ORDER_ID", orderId)
                 })
             }
         )

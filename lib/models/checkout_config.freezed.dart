@@ -22,8 +22,8 @@ PPCheckoutConfig _$PPCheckoutConfigFromJson(Map<String, dynamic> json) {
 mixin _$PPCheckoutConfig {
   String get clientId => throw _privateConstructorUsedError;
   PPEnvironment get environment => throw _privateConstructorUsedError;
-  PPCurrencyCode get currencyCode => throw _privateConstructorUsedError;
-  PPUserAction get userAction => throw _privateConstructorUsedError;
+  PPCurrencyCode? get currencyCode => throw _privateConstructorUsedError;
+  PPUserAction? get userAction => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,8 +40,8 @@ abstract class $PPCheckoutConfigCopyWith<$Res> {
   $Res call(
       {String clientId,
       PPEnvironment environment,
-      PPCurrencyCode currencyCode,
-      PPUserAction userAction});
+      PPCurrencyCode? currencyCode,
+      PPUserAction? userAction});
 }
 
 /// @nodoc
@@ -59,8 +59,8 @@ class _$PPCheckoutConfigCopyWithImpl<$Res, $Val extends PPCheckoutConfig>
   $Res call({
     Object? clientId = null,
     Object? environment = null,
-    Object? currencyCode = null,
-    Object? userAction = null,
+    Object? currencyCode = freezed,
+    Object? userAction = freezed,
   }) {
     return _then(_value.copyWith(
       clientId: null == clientId
@@ -71,14 +71,14 @@ class _$PPCheckoutConfigCopyWithImpl<$Res, $Val extends PPCheckoutConfig>
           ? _value.environment
           : environment // ignore: cast_nullable_to_non_nullable
               as PPEnvironment,
-      currencyCode: null == currencyCode
+      currencyCode: freezed == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
-              as PPCurrencyCode,
-      userAction: null == userAction
+              as PPCurrencyCode?,
+      userAction: freezed == userAction
           ? _value.userAction
           : userAction // ignore: cast_nullable_to_non_nullable
-              as PPUserAction,
+              as PPUserAction?,
     ) as $Val);
   }
 }
@@ -94,8 +94,8 @@ abstract class _$$_PPCheckoutConfigCopyWith<$Res>
   $Res call(
       {String clientId,
       PPEnvironment environment,
-      PPCurrencyCode currencyCode,
-      PPUserAction userAction});
+      PPCurrencyCode? currencyCode,
+      PPUserAction? userAction});
 }
 
 /// @nodoc
@@ -111,8 +111,8 @@ class __$$_PPCheckoutConfigCopyWithImpl<$Res>
   $Res call({
     Object? clientId = null,
     Object? environment = null,
-    Object? currencyCode = null,
-    Object? userAction = null,
+    Object? currencyCode = freezed,
+    Object? userAction = freezed,
   }) {
     return _then(_$_PPCheckoutConfig(
       clientId: null == clientId
@@ -123,14 +123,14 @@ class __$$_PPCheckoutConfigCopyWithImpl<$Res>
           ? _value.environment
           : environment // ignore: cast_nullable_to_non_nullable
               as PPEnvironment,
-      currencyCode: null == currencyCode
+      currencyCode: freezed == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
-              as PPCurrencyCode,
-      userAction: null == userAction
+              as PPCurrencyCode?,
+      userAction: freezed == userAction
           ? _value.userAction
           : userAction // ignore: cast_nullable_to_non_nullable
-              as PPUserAction,
+              as PPUserAction?,
     ));
   }
 }
@@ -143,8 +143,8 @@ class _$_PPCheckoutConfig
   const _$_PPCheckoutConfig(
       {required this.clientId,
       required this.environment,
-      required this.currencyCode,
-      this.userAction = PPUserAction.continueAction});
+      this.currencyCode,
+      this.userAction});
 
   factory _$_PPCheckoutConfig.fromJson(Map<String, dynamic> json) =>
       _$$_PPCheckoutConfigFromJson(json);
@@ -154,10 +154,9 @@ class _$_PPCheckoutConfig
   @override
   final PPEnvironment environment;
   @override
-  final PPCurrencyCode currencyCode;
+  final PPCurrencyCode? currencyCode;
   @override
-  @JsonKey()
-  final PPUserAction userAction;
+  final PPUserAction? userAction;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -213,8 +212,8 @@ abstract class _PPCheckoutConfig implements PPCheckoutConfig {
   const factory _PPCheckoutConfig(
       {required final String clientId,
       required final PPEnvironment environment,
-      required final PPCurrencyCode currencyCode,
-      final PPUserAction userAction}) = _$_PPCheckoutConfig;
+      final PPCurrencyCode? currencyCode,
+      final PPUserAction? userAction}) = _$_PPCheckoutConfig;
 
   factory _PPCheckoutConfig.fromJson(Map<String, dynamic> json) =
       _$_PPCheckoutConfig.fromJson;
@@ -224,9 +223,9 @@ abstract class _PPCheckoutConfig implements PPCheckoutConfig {
   @override
   PPEnvironment get environment;
   @override
-  PPCurrencyCode get currencyCode;
+  PPCurrencyCode? get currencyCode;
   @override
-  PPUserAction get userAction;
+  PPUserAction? get userAction;
   @override
   @JsonKey(ignore: true)
   _$$_PPCheckoutConfigCopyWith<_$_PPCheckoutConfig> get copyWith =>

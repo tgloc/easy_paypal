@@ -14,8 +14,8 @@ class PPCheckoutConfig with _$PPCheckoutConfig {
   const factory PPCheckoutConfig({
     required String clientId,
     required PPEnvironment environment,
-    required PPCurrencyCode currencyCode,
-    @Default(PPUserAction.continueAction) PPUserAction userAction,
+    PPCurrencyCode? currencyCode,
+    PPUserAction? userAction,
   }) = _PPCheckoutConfig;
 
   factory PPCheckoutConfig.fromJson(Map<String, dynamic> json) =>
