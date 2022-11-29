@@ -1,5 +1,3 @@
-import 'package:easy_paypal/enums/index.dart';
-import 'package:easy_paypal/models/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';

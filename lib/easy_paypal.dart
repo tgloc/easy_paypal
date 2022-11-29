@@ -5,6 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'easy_paypal_platform_interface.dart';
 import 'models/index.dart';
 
+export 'enums/index.dart';
+export 'models/index.dart';
+
 class EasyPaypal {
   EasyPaypal._();
 
