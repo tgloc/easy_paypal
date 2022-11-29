@@ -1,0 +1,17 @@
+rootProject.name = 'easy_paypal'
+
+//dependencyResolutionManagement {
+//    repositories {
+//        google()
+//        mavenCentral()
+//        maven {
+//            url  "https://cardinalcommerceprod.jfrog.io/artifactory/androidfasdfdas"
+//            credentials {
+//                // Be sure to add these non-sensitive credentials in order to retrieve dependencies from
+//                // the private repository.
+//                username 'paypal_sgerritz'
+//                password 'AKCp8jQ8tAahqpT5JjZ4FRP2mW7GMoFZ674kGqHmupTesKeAY2G8NcmPKLuTxTGkKjDLRzDUQ'
+//            }
+//        }
+//    }
+//}

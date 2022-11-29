@@ -1,0 +1,125 @@
+include: package:flutter_lints/flutter.yaml
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
+analyzer:
+  strong-mode:
+    implicit-dynamic: true
+  errors:
+    invalid_annotation_target: ignore
+  exclude:
+    - lib/models/**.g.dart
+    - lib/models/**.freezed.dart
+
+linter:
+  rules:
+    # STYLE
+    camel_case_types: true
+    camel_case_extensions: true
+    library_names: true
+    file_names: true
+    library_prefixes: true
+    curly_braces_in_flow_control_structures: true
+    avoid_field_initializers_in_const_classes: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    directives_ordering: true
+    library_private_types_in_public_api: true
+
+    # DOCUMENTATION
+    slash_for_doc_comments: true
+    package_api_docs: true
+
+    # USAGE
+    implementation_imports: true
+    avoid_relative_lib_imports: true
+    prefer_relative_imports: true
+    prefer_adjacent_string_concatenation: true
+    unnecessary_brace_in_string_interps: true
+    prefer_iterable_whereType: true
+    unnecessary_lambdas: false # enable can cause issues when parsing.
+    prefer_equal_for_default_values: true
+    avoid_init_to_null: true
+    unnecessary_getters_setters: true
+    unnecessary_this: true
+    prefer_initializing_formals: true
+    type_init_formals: true
+    empty_constructor_bodies: true
+    unnecessary_new: true
+    unnecessary_const: true
+    avoid_catching_errors: true
+    use_rethrow_when_possible: true
+    avoid_print: true
+    avoid_unnecessary_containers: true
+    use_function_type_syntax_for_parameters: true
+    unnecessary_null_in_if_null_operators: true
+    valid_regexps: true
+    unrelated_type_equality_checks: true
+    unawaited_futures: true
+    recursive_getters: true
+    avoid_shadowing_type_parameters: true
+    use_full_hex_values_for_flutter_colors: true
+    prefer_generic_function_type_aliases: true
+    always_declare_return_types: true
+    always_require_non_null_named_parameters: true
+    annotate_overrides: true
+    avoid_null_checks_in_equality_operators: true
+    avoid_return_types_on_setters: true
+    avoid_single_cascade_in_expression_statements: true
+    avoid_types_as_parameter_names: true
+    await_only_futures: true
+    empty_catches: true
+    no_duplicate_case_values: true
+    null_closures: true
+    omit_local_variable_types: true
+    prefer_collection_literals: true
+    prefer_conditional_assignment: true
+    prefer_contains: true
+    prefer_for_elements_to_map_fromIterable: true
+    prefer_if_null_operators: true
+    prefer_inlined_adds: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    prefer_single_quotes: true
+    prefer_spread_collections: true
+    sort_child_properties_last: true
+    unsafe_html: true
+
+    # DESIGN
+    use_to_and_as_if_applicable: true
+    one_member_abstracts: true
+    prefer_final_fields: true
+    avoid_setters_without_getters: true
+    avoid_private_typedef_functions: true
+    hash_and_equals: true
+
+    # new rule from lints
+    avoid_renaming_method_parameters: true
+    prefer_function_declarations_over_variables: true
+    unnecessary_string_interpolations: true
+    constant_identifier_names: true
+    prefer_null_aware_operators: true
+    prefer_is_not_operator: true
+    prefer_void_to_null: true
+    non_constant_identifier_names: true
+    overridden_fields: true
+    avoid_returning_null_for_void: true
+    sized_box_for_whitespace: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_const_constructors_in_immutables: true
+    no_logic_in_create_state: true
+    avoid_function_literals_in_foreach_calls: true
+    use_key_in_widget_constructors: false
+    prefer_typing_uninitialized_variables: false
+
+    # New lint from 2.0
+    depend_on_referenced_packages: true
+    no_leading_underscores_for_library_prefixes: true
+    no_leading_underscores_for_local_identifiers: true
+    null_check_on_nullable_type_parameter: true
+    prefer_interpolation_to_compose_strings: true
+    unnecessary_constructor_name: true
+    unnecessary_late: true
+    unnecessary_null_aware_assignments: true
+    use_build_context_synchronously: false
