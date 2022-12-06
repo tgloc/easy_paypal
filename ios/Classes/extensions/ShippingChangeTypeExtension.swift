@@ -4,9 +4,9 @@ extension ShippingChangeType : CustomStringConvertible {
     public var description: String {
         switch self {
         case .shippingAddress:
-            return "shipping_address"
+            return "ADDRESS_CHANGE"
         case .shippingMethod:
-            return "shipping_method"
+            return "OPTION_CHANGE"
         default:
             return "UNKNOWN"
         }

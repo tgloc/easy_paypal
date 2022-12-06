@@ -47,8 +47,8 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         orderAmount: PPOrderAmount(
-          currencyCode: PPCurrencyCode.gbp,
-          value: '5',
+          currencyCode: PPCurrencyCode.usd,
+          value: '6',
         ),
       ),
     ],
@@ -61,9 +61,9 @@ class _MyAppState extends State<MyApp> {
     try {
       _easyPaypalPlugin.initConfig(
           config: const PPCheckoutConfig(
-        clientId: 'YOUR_CLIENT_ID',
+        clientId:
+            'AUL_PYstxQvubTTWgSid7GW3Lu3XcPmzkSYxoQbVbzAHfodFB7ClCQSE7AKb-iLmYvmOMjrRjaVpPicW',
         environment: PPEnvironment.sandbox,
-        currencyCode: PPCurrencyCode.usd,
       ));
 
       _easyPaypalPlugin.setCallback(PPCheckoutCallback(onApprove: (data) {

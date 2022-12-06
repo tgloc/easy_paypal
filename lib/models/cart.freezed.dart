@@ -28,7 +28,9 @@ mixin _$PPCart {
   List<PPItem>? get items => throw _privateConstructorUsedError;
   CartAmounts? get amounts => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'cancelUrl', readValue: _PPCartHelper.readUrl)
   String? get cancelUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'returnUrl', readValue: _PPCartHelper.readUrl)
   String? get returnUrl => throw _privateConstructorUsedError;
   PPAmount? get total => throw _privateConstructorUsedError;
   List<PPShippingMethods>? get shippingMethods =>
@@ -57,8 +59,10 @@ abstract class $PPCartCopyWith<$Res> {
       List<PPItem>? items,
       CartAmounts? amounts,
       String? description,
-      String? cancelUrl,
-      String? returnUrl,
+      @JsonKey(name: 'cancelUrl', readValue: _PPCartHelper.readUrl)
+          String? cancelUrl,
+      @JsonKey(name: 'returnUrl', readValue: _PPCartHelper.readUrl)
+          String? returnUrl,
       PPAmount? total,
       List<PPShippingMethods>? shippingMethods,
       PPCartAddress? shippingAddress,
@@ -243,8 +247,10 @@ abstract class _$$_PPCartCopyWith<$Res> implements $PPCartCopyWith<$Res> {
       List<PPItem>? items,
       CartAmounts? amounts,
       String? description,
-      String? cancelUrl,
-      String? returnUrl,
+      @JsonKey(name: 'cancelUrl', readValue: _PPCartHelper.readUrl)
+          String? cancelUrl,
+      @JsonKey(name: 'returnUrl', readValue: _PPCartHelper.readUrl)
+          String? returnUrl,
       PPAmount? total,
       List<PPShippingMethods>? shippingMethods,
       PPCartAddress? shippingAddress,
@@ -366,8 +372,10 @@ class _$_PPCart with DiagnosticableTreeMixin implements _PPCart {
       final List<PPItem>? items,
       this.amounts,
       this.description,
-      this.cancelUrl,
-      this.returnUrl,
+      @JsonKey(name: 'cancelUrl', readValue: _PPCartHelper.readUrl)
+          this.cancelUrl,
+      @JsonKey(name: 'returnUrl', readValue: _PPCartHelper.readUrl)
+          this.returnUrl,
       this.total,
       final List<PPShippingMethods>? shippingMethods,
       this.shippingAddress,
@@ -403,8 +411,10 @@ class _$_PPCart with DiagnosticableTreeMixin implements _PPCart {
   @override
   final String? description;
   @override
+  @JsonKey(name: 'cancelUrl', readValue: _PPCartHelper.readUrl)
   final String? cancelUrl;
   @override
+  @JsonKey(name: 'returnUrl', readValue: _PPCartHelper.readUrl)
   final String? returnUrl;
   @override
   final PPAmount? total;
@@ -530,8 +540,10 @@ abstract class _PPCart implements PPCart {
       final List<PPItem>? items,
       final CartAmounts? amounts,
       final String? description,
-      final String? cancelUrl,
-      final String? returnUrl,
+      @JsonKey(name: 'cancelUrl', readValue: _PPCartHelper.readUrl)
+          final String? cancelUrl,
+      @JsonKey(name: 'returnUrl', readValue: _PPCartHelper.readUrl)
+          final String? returnUrl,
       final PPAmount? total,
       final List<PPShippingMethods>? shippingMethods,
       final PPCartAddress? shippingAddress,
@@ -557,8 +569,10 @@ abstract class _PPCart implements PPCart {
   @override
   String? get description;
   @override
+  @JsonKey(name: 'cancelUrl', readValue: _PPCartHelper.readUrl)
   String? get cancelUrl;
   @override
+  @JsonKey(name: 'returnUrl', readValue: _PPCartHelper.readUrl)
   String? get returnUrl;
   @override
   PPAmount? get total;

@@ -14,18 +14,4 @@ class PPCheckoutCallback {
     this.onCancel,
     this.onShippingChange,
   });
-
-  PPCheckoutCallback copyWith({
-    void Function(PPApprovalData success)? onApprove,
-    void Function(PPErrorInfo error)? onError,
-    void Function()? onCancel,
-    void Function(PPShippingChangeData shippingChangeData)? onShippingChange,
-  }) {
-    return PPCheckoutCallback(
-      onApprove: onApprove ?? this.onApprove,
-      onError: onError ?? this.onError,
-      onCancel: onCancel ?? this.onCancel,
-      onShippingChange: onShippingChange ?? this.onShippingChange,
-    );
-  }
 }

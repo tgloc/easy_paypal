@@ -20,13 +20,13 @@ PPItems _$PPItemsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PPItems {
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get sku => throw _privateConstructorUsedError;
   String? get quantity => throw _privateConstructorUsedError;
   PPItemCategory? get category => throw _privateConstructorUsedError;
   PPUnitAmount? get tax => throw _privateConstructorUsedError;
-  PPUnitAmount? get unitAmount => throw _privateConstructorUsedError;
+  PPUnitAmount get unitAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,16 +39,16 @@ abstract class $PPItemsCopyWith<$Res> {
       _$PPItemsCopyWithImpl<$Res, PPItems>;
   @useResult
   $Res call(
-      {String? name,
+      {String name,
       String? description,
       String? sku,
       String? quantity,
       PPItemCategory? category,
       PPUnitAmount? tax,
-      PPUnitAmount? unitAmount});
+      PPUnitAmount unitAmount});
 
   $PPUnitAmountCopyWith<$Res>? get tax;
-  $PPUnitAmountCopyWith<$Res>? get unitAmount;
+  $PPUnitAmountCopyWith<$Res> get unitAmount;
 }
 
 /// @nodoc
@@ -64,19 +64,19 @@ class _$PPItemsCopyWithImpl<$Res, $Val extends PPItems>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? name = null,
     Object? description = freezed,
     Object? sku = freezed,
     Object? quantity = freezed,
     Object? category = freezed,
     Object? tax = freezed,
-    Object? unitAmount = freezed,
+    Object? unitAmount = null,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -97,10 +97,10 @@ class _$PPItemsCopyWithImpl<$Res, $Val extends PPItems>
           ? _value.tax
           : tax // ignore: cast_nullable_to_non_nullable
               as PPUnitAmount?,
-      unitAmount: freezed == unitAmount
+      unitAmount: null == unitAmount
           ? _value.unitAmount
           : unitAmount // ignore: cast_nullable_to_non_nullable
-              as PPUnitAmount?,
+              as PPUnitAmount,
     ) as $Val);
   }
 
@@ -118,12 +118,8 @@ class _$PPItemsCopyWithImpl<$Res, $Val extends PPItems>
 
   @override
   @pragma('vm:prefer-inline')
-  $PPUnitAmountCopyWith<$Res>? get unitAmount {
-    if (_value.unitAmount == null) {
-      return null;
-    }
-
-    return $PPUnitAmountCopyWith<$Res>(_value.unitAmount!, (value) {
+  $PPUnitAmountCopyWith<$Res> get unitAmount {
+    return $PPUnitAmountCopyWith<$Res>(_value.unitAmount, (value) {
       return _then(_value.copyWith(unitAmount: value) as $Val);
     });
   }
@@ -137,18 +133,18 @@ abstract class _$$_PPItemsCopyWith<$Res> implements $PPItemsCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? name,
+      {String name,
       String? description,
       String? sku,
       String? quantity,
       PPItemCategory? category,
       PPUnitAmount? tax,
-      PPUnitAmount? unitAmount});
+      PPUnitAmount unitAmount});
 
   @override
   $PPUnitAmountCopyWith<$Res>? get tax;
   @override
-  $PPUnitAmountCopyWith<$Res>? get unitAmount;
+  $PPUnitAmountCopyWith<$Res> get unitAmount;
 }
 
 /// @nodoc
@@ -161,19 +157,19 @@ class __$$_PPItemsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? name = null,
     Object? description = freezed,
     Object? sku = freezed,
     Object? quantity = freezed,
     Object? category = freezed,
     Object? tax = freezed,
-    Object? unitAmount = freezed,
+    Object? unitAmount = null,
   }) {
     return _then(_$_PPItems(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -194,31 +190,32 @@ class __$$_PPItemsCopyWithImpl<$Res>
           ? _value.tax
           : tax // ignore: cast_nullable_to_non_nullable
               as PPUnitAmount?,
-      unitAmount: freezed == unitAmount
+      unitAmount: null == unitAmount
           ? _value.unitAmount
           : unitAmount // ignore: cast_nullable_to_non_nullable
-              as PPUnitAmount?,
+              as PPUnitAmount,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$_PPItems with DiagnosticableTreeMixin implements _PPItems {
   const _$_PPItems(
-      {this.name,
+      {required this.name,
       this.description,
       this.sku,
       this.quantity,
       this.category,
       this.tax,
-      this.unitAmount});
+      required this.unitAmount});
 
   factory _$_PPItems.fromJson(Map<String, dynamic> json) =>
       _$$_PPItemsFromJson(json);
 
   @override
-  final String? name;
+  final String name;
   @override
   final String? description;
   @override
@@ -230,7 +227,7 @@ class _$_PPItems with DiagnosticableTreeMixin implements _PPItems {
   @override
   final PPUnitAmount? tax;
   @override
-  final PPUnitAmount? unitAmount;
+  final PPUnitAmount unitAmount;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -290,18 +287,18 @@ class _$_PPItems with DiagnosticableTreeMixin implements _PPItems {
 
 abstract class _PPItems implements PPItems {
   const factory _PPItems(
-      {final String? name,
+      {required final String name,
       final String? description,
       final String? sku,
       final String? quantity,
       final PPItemCategory? category,
       final PPUnitAmount? tax,
-      final PPUnitAmount? unitAmount}) = _$_PPItems;
+      required final PPUnitAmount unitAmount}) = _$_PPItems;
 
   factory _PPItems.fromJson(Map<String, dynamic> json) = _$_PPItems.fromJson;
 
   @override
-  String? get name;
+  String get name;
   @override
   String? get description;
   @override
@@ -313,7 +310,7 @@ abstract class _PPItems implements PPItems {
   @override
   PPUnitAmount? get tax;
   @override
-  PPUnitAmount? get unitAmount;
+  PPUnitAmount get unitAmount;
   @override
   @JsonKey(ignore: true)
   _$$_PPItemsCopyWith<_$_PPItems> get copyWith =>

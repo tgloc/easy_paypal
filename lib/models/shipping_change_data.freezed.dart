@@ -24,7 +24,7 @@ mixin _$PPShippingChangeData {
   String? get paymentId => throw _privateConstructorUsedError;
   PPShippingChangeType get shippingChangeType =>
       throw _privateConstructorUsedError;
-  PPAddress get shippingAddress => throw _privateConstructorUsedError;
+  PPOrderAddress get shippingAddress => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,9 +42,9 @@ abstract class $PPShippingChangeDataCopyWith<$Res> {
       {String payToken,
       String? paymentId,
       PPShippingChangeType shippingChangeType,
-      PPAddress shippingAddress});
+      PPOrderAddress shippingAddress});
 
-  $PPAddressCopyWith<$Res> get shippingAddress;
+  $PPOrderAddressCopyWith<$Res> get shippingAddress;
 }
 
 /// @nodoc
@@ -82,14 +82,14 @@ class _$PPShippingChangeDataCopyWithImpl<$Res,
       shippingAddress: null == shippingAddress
           ? _value.shippingAddress
           : shippingAddress // ignore: cast_nullable_to_non_nullable
-              as PPAddress,
+              as PPOrderAddress,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $PPAddressCopyWith<$Res> get shippingAddress {
-    return $PPAddressCopyWith<$Res>(_value.shippingAddress, (value) {
+  $PPOrderAddressCopyWith<$Res> get shippingAddress {
+    return $PPOrderAddressCopyWith<$Res>(_value.shippingAddress, (value) {
       return _then(_value.copyWith(shippingAddress: value) as $Val);
     });
   }
@@ -107,10 +107,10 @@ abstract class _$$_PPShippingChangeDataCopyWith<$Res>
       {String payToken,
       String? paymentId,
       PPShippingChangeType shippingChangeType,
-      PPAddress shippingAddress});
+      PPOrderAddress shippingAddress});
 
   @override
-  $PPAddressCopyWith<$Res> get shippingAddress;
+  $PPOrderAddressCopyWith<$Res> get shippingAddress;
 }
 
 /// @nodoc
@@ -145,7 +145,7 @@ class __$$_PPShippingChangeDataCopyWithImpl<$Res>
       shippingAddress: null == shippingAddress
           ? _value.shippingAddress
           : shippingAddress // ignore: cast_nullable_to_non_nullable
-              as PPAddress,
+              as PPOrderAddress,
     ));
   }
 }
@@ -171,7 +171,7 @@ class _$_PPShippingChangeData
   @override
   final PPShippingChangeType shippingChangeType;
   @override
-  final PPAddress shippingAddress;
+  final PPOrderAddress shippingAddress;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -229,7 +229,7 @@ abstract class _PPShippingChangeData implements PPShippingChangeData {
       {required final String payToken,
       final String? paymentId,
       required final PPShippingChangeType shippingChangeType,
-      required final PPAddress shippingAddress}) = _$_PPShippingChangeData;
+      required final PPOrderAddress shippingAddress}) = _$_PPShippingChangeData;
 
   factory _PPShippingChangeData.fromJson(Map<String, dynamic> json) =
       _$_PPShippingChangeData.fromJson;
@@ -241,7 +241,7 @@ abstract class _PPShippingChangeData implements PPShippingChangeData {
   @override
   PPShippingChangeType get shippingChangeType;
   @override
-  PPAddress get shippingAddress;
+  PPOrderAddress get shippingAddress;
   @override
   @JsonKey(ignore: true)
   _$$_PPShippingChangeDataCopyWith<_$_PPShippingChangeData> get copyWith =>

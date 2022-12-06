@@ -20,8 +20,8 @@ _$_PPCart _$$_PPCartFromJson(Map<String, dynamic> json) => _$_PPCart(
           ? null
           : CartAmounts.fromJson(json['amounts'] as Map<String, dynamic>),
       description: json['description'] as String?,
-      cancelUrl: json['cancelUrl'] as String?,
-      returnUrl: json['returnUrl'] as String?,
+      cancelUrl: _PPCartHelper.readUrl(json, 'cancelUrl') as String?,
+      returnUrl: _PPCartHelper.readUrl(json, 'returnUrl') as String?,
       total: json['total'] == null
           ? null
           : PPAmount.fromJson(json['total'] as Map<String, dynamic>),

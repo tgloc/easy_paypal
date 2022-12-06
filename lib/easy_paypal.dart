@@ -49,34 +49,25 @@ class EasyPaypal {
     _platform.checkout(orderMap);
   }
 
-  void _onApprove(Map data) {
+  void _onApprove(PPApprovalData approval) {
     try {
-      final approvalDataJson = data['approvalData'];
-      final approvalData = jsonDecode(approvalDataJson);
-      final approval = PPApprovalData.fromJson(approvalData);
       _callback?.onApprove(approval);
     } catch (e) {
       debugPrint(':::: ERROR _onApprove: $e');
     }
   }
 
-  void _onShippingChange(Map data) {
+  void _onShippingChange(PPShippingChangeData data) {
     try {
-      final shippingChangeDataJson = data['shippingChangeData'];
-      final shippingChangeData = jsonDecode(shippingChangeDataJson);
-      final shippingChange = PPShippingChangeData.fromJson(shippingChangeData);
-      _callback?.onShippingChange?.call(shippingChange);
+      _callback?.onShippingChange?.call(data);
     } catch (e) {
       debugPrint(':::: ERROR _onShippingChange: $e');
     }
   }
 
-  void _onError(Map data) {
+  void _onError(PPErrorInfo data) {
     try {
-      final errorDataJson = data['errorInfo'];
-      final errorData = jsonDecode(errorDataJson);
-      final error = PPErrorInfo.fromJson(errorData);
-      _callback?.onError?.call(error);
+      _callback?.onError?.call(data);
     } catch (e) {
       debugPrint(':::: ERROR _onError: $e');
     }

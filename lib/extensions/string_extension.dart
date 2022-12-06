@@ -4,8 +4,19 @@ extension ScreamingSnake on String {
         (m) => '${m[1]}_${m[2]}',
       ).toUpperCase();
 
-  String get camelCase => replaceAllMapped(
+  /// camelCase from all case
+  String get camelCase {
+    if (contains('_')) {
+      var temp = toLowerCase();
+      return temp.replaceAllMapped(
         RegExp(r'(_\w)'),
-        (m) => m[1]!.substring(1).toUpperCase(),
+        (m) => m[0]!.substring(1).toUpperCase(),
       );
+    }
+    return this;
+  }
+
+  bool isCamelCase() {
+    return this == camelCase;
+  }
 }

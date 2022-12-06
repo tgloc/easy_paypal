@@ -1,9 +1,12 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
+import 'easy_paypal.dart';
 import 'easy_paypal_method_channel.dart';
-import 'models/index.dart';
 
-typedef MethodCallback = void Function(Map data);
+typedef PPApprovalCallback = void Function(PPApprovalData approvalData);
+typedef PPShippingChangeCallback = void Function(
+    PPShippingChangeData shippingChangeData);
+typedef PPErrorCallback = void Function(PPErrorInfo errorInfo);
 
 abstract class EasyPaypalPlatform extends PlatformInterface {
   /// Constructs a EasyPaypalPlatform.
@@ -39,9 +42,9 @@ abstract class EasyPaypalPlatform extends PlatformInterface {
   }
 
   void setCheckoutCallback({
-    required MethodCallback onApprove,
-    required MethodCallback onShippingChange,
-    required MethodCallback onError,
+    required PPApprovalCallback onApprove,
+    required PPShippingChangeCallback onShippingChange,
+    required PPErrorCallback onError,
     required Function() onCancel,
   }) {
     throw UnimplementedError('setCheckoutCallback() has not been implemented.');

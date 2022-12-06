@@ -10,7 +10,7 @@ import PayPalCheckout
 import Flutter
 
 enum MethodName: String {
-    case onApprove, onCancel, onError, onShippingChange
+    case onApprove, onCancel, onError, onShippingChange, onCapture
 }
 
 class PayPalCallBackHelper {
@@ -21,8 +21,13 @@ class PayPalCallBackHelper {
     }
 
     public func onApprove(_ approval: Approval) throws {
-        approval.actions.capture { (response, error) in
-            print("Order successfully captured: \(response?.data)")
+        approval.actions.capture { [self] (response, error) in
+            print("Capture order successfully captured: \(response?.data)")
+//            let dataMap = response?.data.toDictionary()
+//            let dataJson = try! JSONSerialization.data(withJSONObject: dataMap as Any, options: [])
+//            let jsonString = String(data: dataJson, encoding: .utf8)!
+//            let finalResult = ["captureData": jsonString]
+//            channel.invokeMethod(MethodName.onCapture.rawValue, arguments: finalResult)
         }
         let data = approval.data
         var dataMap: [String: Any?] = [
@@ -58,8 +63,12 @@ class PayPalCallBackHelper {
                 "intent": cart.intent,
                 "billingToken": cart.billingToken,
                 "billingType": cart.billingType?.rawValue,
-                "cancelUrl": cart.cancelURL?.absoluteString,
-                "returnUrl": cart.returnURL?.absoluteString,
+                "cancelUrl": [
+                    "href" : cart.cancelURL?.absoluteString,
+                ],
+                "returnUrl": [
+                    "href" : cart.returnURL?.absoluteString,
+                ],
                 "total": cart.total.toDictionary(),
                 "shippingAddress": cart.shippingAddress?.toDictionary(),
                 "billingAddress": cart.billingAddress?.toDictionary(),
@@ -87,20 +96,21 @@ class PayPalCallBackHelper {
     public func onShippingChange(_ shippingChange: ShippingChange) throws {
         let dataMap: [String: Any?] = [
             "type": shippingChange.type.description,
-            "selectedShippingAddress": shippingChange.selectedShippingAddress.toDictionary(),
+            "shippingChangeType" : shippingChange.type.description,
+            "shippingAddress": shippingChange.selectedShippingAddress.toDictionary(),
             "shippingMethods": shippingChange.shippingMethods.map({ (shippingMethod) in
                 shippingMethod.toDictionary()
             }),
             "selectedShippingMethod": shippingChange.selectedShippingMethod?.toDictionary(),
             "payToken": shippingChange.payToken,
-            "paymentID": shippingChange.paymentID,
+            "paymentId": shippingChange.paymentID,
             "billingToken": shippingChange.billingToken,
         ]
 
 
         let dataJson = try JSONSerialization.data(withJSONObject: dataMap, options: [])
         let jsonString = String(data: dataJson, encoding: .utf8)!
-        let finalResult = ["result": jsonString]
+        let finalResult = ["shippingChangeData": jsonString]
         channel.invokeMethod(MethodName.onShippingChange.rawValue, arguments: finalResult)
     }
 
@@ -108,8 +118,11 @@ class PayPalCallBackHelper {
         channel.invokeMethod(MethodName.onApprove.rawValue, arguments: nil)
     }
 
-    public func onError(_ error: ErrorInfo) {
-        channel.invokeMethod(MethodName.onError.rawValue, arguments: error.toDictionary())
+    public func onError(_ error: ErrorInfo)  {
+        let dataJson = try! JSONSerialization.data(withJSONObject: error.toDictionary(), options: [])
+        let jsonString = String(data: dataJson, encoding: .utf8)!
+        let finalResult = ["errorInfo": jsonString]
+        channel.invokeMethod(MethodName.onError.rawValue, arguments: finalResult)
     }
 }
 

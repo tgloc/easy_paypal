@@ -11,7 +11,11 @@ class PPOrderAddress with _$PPOrderAddress {
   const factory PPOrderAddress({
     @JsonKey(name: 'address_line_1') String? addressLine1,
     @JsonKey(name: 'address_line_2') String? addressLine2,
+
+    /// state or province like "CA" or "California"
     @JsonKey(name: 'admin_area_1') String? adminArea1,
+
+    /// city like "San Francisco"
     @JsonKey(name: 'admin_area_2') String? adminArea2,
     String? postalCode,
     String? countryCode,

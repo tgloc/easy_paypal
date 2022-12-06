@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -56,21 +58,35 @@ class MethodChannelEasyPaypal implements EasyPaypalPlatform {
 
   @override
   void setCheckoutCallback({
-    required MethodCallback onApprove,
-    required MethodCallback onShippingChange,
-    required MethodCallback onError,
+    required PPApprovalCallback onApprove,
+    required PPShippingChangeCallback onShippingChange,
+    required PPErrorCallback onError,
     required Function() onCancel,
   }) {
     methodChannel.setMethodCallHandler((call) async {
       try {
-        final data = call.arguments as Map;
+        final data = call.arguments as Map?;
+        if (data == null) {
+          return onCancel();
+        }
+
         switch (MethodNativeInvoke.from(call.method.camelCase)) {
           case MethodNativeInvoke.onApprove:
-            return onApprove(data);
+            final approvalDataJson = data['approvalData'];
+            final approvalData = jsonDecode(approvalDataJson);
+            final approval = PPApprovalData.fromJson(approvalData);
+            return onApprove(approval);
           case MethodNativeInvoke.onShippingChange:
-            return onShippingChange(data);
+            final shippingChangeDataJson = data['shippingChangeData'];
+            final shippingChangeData = jsonDecode(shippingChangeDataJson);
+            final shippingChange =
+                PPShippingChangeData.fromJson(shippingChangeData);
+            return onShippingChange(shippingChange);
           case MethodNativeInvoke.onError:
-            return onError(data);
+            final errorDataJson = data['errorInfo'];
+            final errorData = jsonDecode(errorDataJson);
+            final error = PPErrorInfo.fromJson(errorData);
+            return onError(error);
           case MethodNativeInvoke.onCancel:
             return onCancel();
         }

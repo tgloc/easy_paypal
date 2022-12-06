@@ -9,6 +9,7 @@ import 'item.dart';
 import 'shipping_methods.dart';
 
 part 'cart.freezed.dart';
+
 part 'cart.g.dart';
 
 @freezed
@@ -22,8 +23,10 @@ class PPCart with _$PPCart {
     List<PPItem>? items,
     CartAmounts? amounts,
     String? description,
-    String? cancelUrl,
-    String? returnUrl,
+    @JsonKey(name: 'cancelUrl', readValue: _PPCartHelper.readUrl)
+        String? cancelUrl,
+    @JsonKey(name: 'returnUrl', readValue: _PPCartHelper.readUrl)
+        String? returnUrl,
     PPAmount? total,
     List<PPShippingMethods>? shippingMethods,
     PPCartAddress? shippingAddress,
@@ -32,4 +35,8 @@ class PPCart with _$PPCart {
   }) = _PPCart;
 
   factory PPCart.fromJson(Map<String, dynamic> json) => _$PPCartFromJson(json);
+}
+
+class _PPCartHelper {
+  static String? readUrl(Map map, String key) => map[key]?['href'];
 }

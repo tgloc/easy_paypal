@@ -24,8 +24,12 @@ mixin _$PPOrderAddress {
   String? get addressLine1 => throw _privateConstructorUsedError;
   @JsonKey(name: 'address_line_2')
   String? get addressLine2 => throw _privateConstructorUsedError;
+
+  /// state or province like "CA" or "California"
   @JsonKey(name: 'admin_area_1')
   String? get adminArea1 => throw _privateConstructorUsedError;
+
+  /// city like "San Francisco"
   @JsonKey(name: 'admin_area_2')
   String? get adminArea2 => throw _privateConstructorUsedError;
   String? get postalCode => throw _privateConstructorUsedError;
@@ -188,9 +192,13 @@ class _$_PPOrderAddress
   @override
   @JsonKey(name: 'address_line_2')
   final String? addressLine2;
+
+  /// state or province like "CA" or "California"
   @override
   @JsonKey(name: 'admin_area_1')
   final String? adminArea1;
+
+  /// city like "San Francisco"
   @override
   @JsonKey(name: 'admin_area_2')
   final String? adminArea2;
@@ -274,9 +282,13 @@ abstract class _PPOrderAddress implements PPOrderAddress {
   @JsonKey(name: 'address_line_2')
   String? get addressLine2;
   @override
+
+  /// state or province like "CA" or "California"
   @JsonKey(name: 'admin_area_1')
   String? get adminArea1;
   @override
+
+  /// city like "San Francisco"
   @JsonKey(name: 'admin_area_2')
   String? get adminArea2;
   @override

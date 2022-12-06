@@ -9,14 +9,15 @@ part 'items.g.dart';
 
 @freezed
 class PPItems with _$PPItems {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory PPItems({
-    String? name,
+    required String name,
     String? description,
     String? sku,
     String? quantity,
     PPItemCategory? category,
     PPUnitAmount? tax,
-    PPUnitAmount? unitAmount,
+    required PPUnitAmount unitAmount,
   }) = _PPItems;
 
   factory PPItems.fromJson(Map<String, dynamic> json) =>

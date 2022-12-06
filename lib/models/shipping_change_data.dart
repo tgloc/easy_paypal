@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../enums/shipping_change_type.dart';
-import 'address.dart';
+import 'order_address.dart';
 
 part 'shipping_change_data.freezed.dart';
 part 'shipping_change_data.g.dart';
@@ -13,7 +13,7 @@ class PPShippingChangeData with _$PPShippingChangeData {
     required String payToken,
     String? paymentId,
     required PPShippingChangeType shippingChangeType,
-    required PPAddress shippingAddress,
+    required PPOrderAddress shippingAddress,
   }) = _PPShippingChangeData;
 
   factory PPShippingChangeData.fromJson(Map<String, dynamic> json) =>

@@ -13,8 +13,8 @@ _$_PPShippingChangeData _$$_PPShippingChangeDataFromJson(
       paymentId: json['paymentId'] as String?,
       shippingChangeType: $enumDecode(
           _$PPShippingChangeTypeEnumMap, json['shippingChangeType']),
-      shippingAddress:
-          PPAddress.fromJson(json['shippingAddress'] as Map<String, dynamic>),
+      shippingAddress: PPOrderAddress.fromJson(
+          json['shippingAddress'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_PPShippingChangeDataToJson(

@@ -7,7 +7,7 @@ part of 'items.dart';
 // **************************************************************************
 
 _$_PPItems _$$_PPItemsFromJson(Map<String, dynamic> json) => _$_PPItems(
-      name: json['name'] as String?,
+      name: json['name'] as String,
       description: json['description'] as String?,
       sku: json['sku'] as String?,
       quantity: json['quantity'] as String?,
@@ -15,9 +15,8 @@ _$_PPItems _$$_PPItemsFromJson(Map<String, dynamic> json) => _$_PPItems(
       tax: json['tax'] == null
           ? null
           : PPUnitAmount.fromJson(json['tax'] as Map<String, dynamic>),
-      unitAmount: json['unitAmount'] == null
-          ? null
-          : PPUnitAmount.fromJson(json['unitAmount'] as Map<String, dynamic>),
+      unitAmount:
+          PPUnitAmount.fromJson(json['unit_amount'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_PPItemsToJson(_$_PPItems instance) =>
@@ -28,7 +27,7 @@ Map<String, dynamic> _$$_PPItemsToJson(_$_PPItems instance) =>
       'quantity': instance.quantity,
       'category': _$PPItemCategoryEnumMap[instance.category],
       'tax': instance.tax?.toJson(),
-      'unitAmount': instance.unitAmount?.toJson(),
+      'unit_amount': instance.unitAmount.toJson(),
     };
 
 const _$PPItemCategoryEnumMap = {
